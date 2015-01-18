@@ -45,6 +45,7 @@ public class Javadoc2XlsDoclet {
         int sheetIndex = options.getSheetIndex();
 
         int classCount = 0;
+        int methodTotal = 0;
         // body
         for (ClassDoc classDoc : rootDoc.classes()) {
             String classId = generateId(classCount++);
@@ -57,10 +58,12 @@ public class Javadoc2XlsDoclet {
 
             int methodCount = 0;
             for (MethodDoc methodDoc : classDoc.methods(true)) {
-                String methodId = generateId(methodCount);
+                String methodId = generateId(methodCount++);
+                methodTotal++;
                 MethodDocBean methodDocBean = new MethodDocBean(
                         methodId,
-                        methodDoc.name()
+                        methodDoc.name(),
+                        methodDoc.commentText()
                 );
                 parseAnnotations(methodDoc, methodDocBean);
                 classDocBean.getMethodDocs().add(methodDocBean);
@@ -70,16 +73,20 @@ public class Javadoc2XlsDoclet {
             try (OutputStream outputStream = new FileOutputStream(file)) {
                 TestListBook book = new TestListBook(templateFilePath, sheetIndex);
 
+                book.writeCell(TestListBook.MARKER_CLASSNAME, classDocBean.getClassName());
                 for (MethodDocBean methodDocBean : classDocBean.getMethodDocs()) {
-                    book.write(methodDocBean);
+                    book.writeRow(methodDocBean);
                 }
                 book.saveToFile(outputStream);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             } catch (InvalidFormatException e) {
                 throw new RuntimeException(e);
+            } finally {
+                logger.debug("{} methods in {}", methodCount, classDocBean.getClassName());
             }
         }
+        logger.debug("{} classes, {} methods", classCount, methodTotal);
     }
 
     private static String generateId(int count) {

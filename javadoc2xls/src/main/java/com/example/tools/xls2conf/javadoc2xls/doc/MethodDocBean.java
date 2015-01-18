@@ -9,11 +9,13 @@ import java.util.Map;
 public class MethodDocBean {
     private String id;
     private String methodName;
+    private String commentText;
     private Map<String, String> tags;
 
-    public MethodDocBean(String id, String methodName) {
+    public MethodDocBean(String id, String methodName, String commentText) {
         this.id = id;
         this.methodName = methodName;
+        this.commentText = commentText;
         this.tags = new HashMap<String, String>();
     }
 
@@ -23,6 +25,10 @@ public class MethodDocBean {
 
     public String getMethodName() {
         return methodName;
+    }
+
+    public String getCommentText() {
+        return commentText;
     }
 
     public Map<String, String> getTags() {

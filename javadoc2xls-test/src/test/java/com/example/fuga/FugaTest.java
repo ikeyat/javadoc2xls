@@ -5,7 +5,7 @@ package com.example.fuga;
  */
 public class FugaTest {
     /**
-     *
+     * ここはコメントです1。
      * @no 1
      * @column1 ふが1
      * ふが2
@@ -17,7 +17,7 @@ public class FugaTest {
     }
 
     /**
-     *
+     * ここはコメントです2。
      * @no 2
      * @column1 ふが5
      * ふが6

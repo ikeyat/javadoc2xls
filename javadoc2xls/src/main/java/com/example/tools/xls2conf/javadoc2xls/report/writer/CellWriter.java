@@ -27,7 +27,7 @@ public abstract class CellWriter {
         }
         String text = getText(methodDocBean);
         cell.setCellValue(text);
-        logger.debug("write at column={}: {} {}", columnIndex, text, cell);
+        logger.debug("write at column={}: {}", columnIndex, text);
     }
 
     public String getType() {

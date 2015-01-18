@@ -2,6 +2,7 @@ package com.example.tools.xls2conf.javadoc2xls.report;
 
 import com.example.tools.xls2conf.javadoc2xls.doc.MethodDocBean;
 import com.example.tools.xls2conf.javadoc2xls.report.writer.CellWriter;
+import com.example.tools.xls2conf.javadoc2xls.report.writer.CommentTextCellWriter;
 import com.example.tools.xls2conf.javadoc2xls.report.writer.TagCellWriter;
 import com.example.tools.xls2conf.javadoc2xls.report.writer.TestMethodNameCellWriter;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -13,7 +14,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -21,19 +24,23 @@ import java.util.Set;
  */
 public class TestListBook {
     private static final Logger logger = LoggerFactory.getLogger(TestListBook.class);
-    private static final String MARKER_ROW = "#row";
+    public static final String MARKER_ROW = "#row";
+    public static final String MARKER_CELL = "#cell";
+    public static final String MARKER_CLASSNAME = "#className";
 
     private Workbook workbook;
     private Sheet sheet;
     private int sheetIndex;
     private Set<CellWriter> cellWriters;
+    private Map<String, Cell> cellMap;
     private int rowIndex = -1;
 
     public TestListBook(String templateFile, int sheetIndex) throws IOException, InvalidFormatException {
         InputStream inputStream = new FileInputStream(templateFile);
         this.workbook = WorkbookFactory.create(inputStream);
         this.sheetIndex = sheetIndex;
-        this.cellWriters = new HashSet<CellWriter>();
+        this.cellWriters = new HashSet<>();
+        this.cellMap = new HashMap<>();
         this.sheet = workbook.getSheetAt(sheetIndex);
         seekHead();
     }
@@ -59,6 +66,9 @@ public class TestListBook {
                     if (TestMethodNameCellWriter.isTestMethodNameType(type)) {
                         // for testMethodName
                         writer = new TestMethodNameCellWriter(columnIndex);
+                    } else if (CommentTextCellWriter.isCommentTextType(type)) {
+                        // for commentText
+                        writer = new CommentTextCellWriter(columnIndex);
                     } else {
                         // for tags
                         writer = new TagCellWriter(type, columnIndex);
@@ -68,16 +78,27 @@ public class TestListBook {
                     rowIndex = cell.getRowIndex();
 
                     logger.debug("row marker \"{}\" is detected at ({}, {})", type, columnIndex, rowIndex);
+                } else if (cellValue.startsWith(MARKER_CELL)) {
+                    String type = cellValue.replace(MARKER_CELL, "");
+                    int columnIndex = cell.getColumnIndex();
+                    if (MARKER_CLASSNAME.equals(type)) {
+                        // for className
+                        cellMap.put(MARKER_CLASSNAME, cell);
+                        logger.debug("cell marker \"{}\" is detected at ({}, {})", type, columnIndex, rowIndex);
+                    }
                 }
-            }
-            if (rowIndex != -1) {
-                // head position has been detected
-                break;
             }
         }
     }
 
-    public void write(MethodDocBean methodDocBean) {
+    public void writeCell(String type, String text) {
+        Cell cell = cellMap.get(type);
+        if (cell != null) {
+            cell.setCellValue(text);
+        }
+    }
+
+    public void writeRow(MethodDocBean methodDocBean) {
         Row row = sheet.getRow(rowIndex);
         if (row == null) {
             row = sheet.createRow(rowIndex);

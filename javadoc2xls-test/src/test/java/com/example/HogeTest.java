@@ -5,7 +5,7 @@ package com.example;
  */
 public class HogeTest {
     /**
-     *
+     * ここはコメントです1。
      * @no 1
      * @column1 ほげ1
      * ほげ2
@@ -17,7 +17,7 @@ public class HogeTest {
     }
 
     /**
-     *
+     * ここはコメントです2。
      * @no 2
      * @column1 ほげ5
      * ほげ6
