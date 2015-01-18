@@ -6,6 +6,7 @@
         <artifactId>xls2conf-parent</artifactId>
         <groupId>com.example.tools.xls2conf</groupId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../xls2conf-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
