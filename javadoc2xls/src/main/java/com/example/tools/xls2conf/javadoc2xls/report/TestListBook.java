@@ -1,10 +1,7 @@
 package com.example.tools.xls2conf.javadoc2xls.report;
 
 import com.example.tools.xls2conf.javadoc2xls.doc.MethodDocBean;
-import com.example.tools.xls2conf.javadoc2xls.report.writer.CellWriter;
-import com.example.tools.xls2conf.javadoc2xls.report.writer.CommentTextCellWriter;
-import com.example.tools.xls2conf.javadoc2xls.report.writer.TagCellWriter;
-import com.example.tools.xls2conf.javadoc2xls.report.writer.TestMethodNameCellWriter;
+import com.example.tools.xls2conf.javadoc2xls.report.writer.*;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
 import org.slf4j.Logger;
@@ -69,6 +66,12 @@ public class TestListBook {
                     } else if (CommentTextCellWriter.isCommentTextType(type)) {
                         // for commentText
                         writer = new CommentTextCellWriter(columnIndex);
+                    } else if (StaticTextCellWriter.isStaticTextType(type)) {
+                        // for staticText
+                        writer = new StaticTextCellWriter(type, columnIndex);
+                    } else if (DateCellWriter.isDateType(type)) {
+                        // for date
+                        writer = new DateCellWriter(type, columnIndex);
                     } else {
                         // for tags
                         writer = new TagCellWriter(type, columnIndex);
