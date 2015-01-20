@@ -22,12 +22,15 @@ public class ClassDocBean {
         public int compare(MethodDocBean methodDocBean, MethodDocBean methodDocBean2) {
             String key = methodDocBean.getId();
             String key2 = methodDocBean2.getId();
+            int ret = key.compareTo(key2);
+
             if (sortTag != null && sortTag.length() != 0) {
                 key = methodDocBean.getTags().get(sortTag);
                 key2 = methodDocBean2.getTags().get(sortTag);
             }
-            int ret = key.compareTo(key2);
-            logger.debug("compared result ({}, {}) is {}", key, key2, ret);
+            if (key != null) {
+                ret = key.compareTo(key2);
+            }
             return ret;
         }
     }

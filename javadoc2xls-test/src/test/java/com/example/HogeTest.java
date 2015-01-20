@@ -1,5 +1,7 @@
 package com.example;
 
+import org.junit.Test;
+
 /**
  * Created by ikeya on 15/01/13.
  */
@@ -12,6 +14,7 @@ public class HogeTest {
      * @column2 ほげ3
      * @column3 ほげ4
      */
+    @Test
     public void testHoge_001() {
 
     }
@@ -24,6 +27,19 @@ public class HogeTest {
      * @column2 ほげ7
      * @column3 ほげ8
      */
+    public void hoge_002() {
+
+    }
+
+    /**
+     * ここはコメントです2。
+     * @no 2
+     * @column1 ほげ5
+     * ほげ6
+     * @column2 ほげ7
+     * @column3 ほげ8
+     */
+    @Test
     public void testHoge_002() {
 
     }

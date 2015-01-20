@@ -113,6 +113,11 @@
                 <artifactId>poi-ooxml-schemas</artifactId>
                 <version>3.11</version>
             </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.11</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -130,6 +135,18 @@
             <id>default-profile</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
+                <file>
+                    <exists>${java.home}/lib/tools.jar</exists>
+                </file>
+            </activation>
+            <properties>
+                <toolsjar.path>${java.home}/lib/tools.jar</toolsjar.path>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>linux</id>
+            <activation>
                 <file>
                     <exists>${java.home}/../lib/tools.jar</exists>
                 </file>

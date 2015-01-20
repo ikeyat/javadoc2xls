@@ -5,6 +5,7 @@ import com.example.tools.xls2conf.javadoc2xls.doc.MethodDocBean;
 import com.example.tools.xls2conf.javadoc2xls.report.TestListBook;
 import com.sun.javadoc.*;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,8 +66,15 @@ public class Javadoc2XlsDoclet {
                         methodDoc.name(),
                         methodDoc.commentText()
                 );
-                parseAnnotations(methodDoc, methodDocBean);
-                classDocBean.getMethodDocs().add(methodDocBean);
+                if (isTestAnnotated(methodDoc)) {
+                    parseAnnotations(methodDoc, methodDocBean);
+                    classDocBean.getMethodDocs().add(methodDocBean);
+                }
+            }
+
+            if (classDocBean.getMethodDocs().size() == 0) {
+                // skip
+                continue;
             }
 
             File file = new File(reportDir + "/" + classDocBean.getReportFileName());
@@ -107,7 +115,6 @@ public class Javadoc2XlsDoclet {
     }
 
     private static void parseAnnotations(MethodDoc methodDoc, MethodDocBean methodDocBean) {
-        // TODO: extract only methods that have @Test annotation
         Map<String, String> tagsMap = methodDocBean.getTags();
         Tag[] tags = methodDoc.tags();
         for (Tag tag : tags) {
@@ -115,5 +122,21 @@ public class Javadoc2XlsDoclet {
             String tagText = tag.text().replaceAll(tagName + ":", "");
             tagsMap.put(tagName, tagText);
         }
+    }
+
+    /**
+     * Extract only methods that have @Test annotation
+     *
+     * @param methodDoc
+     * @return
+     */
+    private static boolean isTestAnnotated(MethodDoc methodDoc) {
+        String testAnnotationName = Test.class.getName();
+        for (AnnotationDesc annotationDesc : methodDoc.annotations()) {
+            if (testAnnotationName.equals(annotationDesc.annotationType().qualifiedTypeName())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
