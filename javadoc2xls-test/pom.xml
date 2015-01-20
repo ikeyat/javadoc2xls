@@ -33,6 +33,7 @@
                         <artifactId>javadoc2xls</artifactId>
                         <version>1.0-SNAPSHOT</version>
                     </docletArtifact>
+                    <encoding>UTF-8</encoding>
                     <useStandardDocletOptions>false</useStandardDocletOptions>
                     <additionalparam>
                         -template ${project.basedir}/report/template/sheet_01.xls
@@ -42,8 +43,6 @@
                         -sheetindex 0
                     </additionalparam>
                 </configuration>
-                <executions>
-                </executions>
             </plugin>
         </plugins>
     </build>
