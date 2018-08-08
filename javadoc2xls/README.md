@@ -59,9 +59,10 @@ This tool will resolve this problem and keep the consistency with its one-way ge
   
 1. Try the example!  
     Go back to the console, please execute Maven as follows to generate javadoc of test classes.
+    Don't forget to switch Maven profile (``-P``).
     ```console
     $ cd ../javadoc2xls-test
-    $ mvn javadoc:test-javadoc
+    $ mvn javadoc:test-javadoc -P javadoc2xls
     ```
 
 
