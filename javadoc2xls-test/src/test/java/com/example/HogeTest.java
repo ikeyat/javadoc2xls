@@ -3,7 +3,8 @@ package com.example;
 import org.junit.Test;
 
 /**
- * Created by ikeya on 15/01/13.
+ * クラスのコメントHoge
+ * @author ikeyat
  */
 public class HogeTest {
     /**

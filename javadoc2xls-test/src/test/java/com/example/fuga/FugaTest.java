@@ -3,7 +3,8 @@ package com.example.fuga;
 import org.junit.Test;
 
 /**
- * Created by ikeya on 15/01/13.
+ * クラスのコメントFuga
+ * @author ikeyat
  */
 public class FugaTest {
     /**

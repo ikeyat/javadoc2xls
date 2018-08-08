@@ -54,8 +54,10 @@ public class Javadoc2XlsDoclet {
             ClassDocBean classDocBean = new ClassDocBean(
                     classId,
                     classDoc.qualifiedName(),
+                    classDoc.commentText(),
                     sortTag,
                     reportFileName);
+            parseClassTags(classDoc, classDocBean);
 
             int methodCount = 0;
             for (MethodDoc methodDoc : classDoc.methods(true)) {
@@ -67,7 +69,7 @@ public class Javadoc2XlsDoclet {
                         methodDoc.commentText()
                 );
                 if (isTestAnnotated(methodDoc)) {
-                    parseAnnotations(methodDoc, methodDocBean);
+                    parseMethodTags(methodDoc, methodDocBean);
                     classDocBean.getMethodDocs().add(methodDocBean);
                 }
             }
@@ -81,7 +83,7 @@ public class Javadoc2XlsDoclet {
             try (OutputStream outputStream = new FileOutputStream(file)) {
                 TestListBook book = new TestListBook(templateFilePath, sheetIndex);
 
-                book.writeCell(TestListBook.MARKER_CLASSNAME, classDocBean.getClassName());
+                book.writeCell(classDocBean);
                 for (MethodDocBean methodDocBean : classDocBean.getMethodDocs()) {
                     book.writeRow(methodDocBean);
                 }
@@ -114,9 +116,15 @@ public class Javadoc2XlsDoclet {
         return MessageFormat.format(ret, classId, className);
     }
 
-    private static void parseAnnotations(MethodDoc methodDoc, MethodDocBean methodDocBean) {
-        Map<String, String> tagsMap = methodDocBean.getTags();
-        Tag[] tags = methodDoc.tags();
+    private static void parseClassTags(ClassDoc classDoc, ClassDocBean classDocBean) {
+        parseTags(classDocBean.getTags(), classDoc.tags());
+    }
+
+    private static void parseMethodTags(MethodDoc methodDoc, MethodDocBean methodDocBean) {
+        parseTags(methodDocBean.getTags(), methodDoc.tags());
+    }
+
+    private static void parseTags(Map<String, String> tagsMap, Tag[] tags) {
         for (Tag tag : tags) {
             String tagName = tag.name();
             String tagText = tag.text().replaceAll(tagName + ":", "");

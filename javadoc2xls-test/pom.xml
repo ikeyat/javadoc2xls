@@ -36,7 +36,7 @@
                     <encoding>UTF-8</encoding>
                     <useStandardDocletOptions>false</useStandardDocletOptions>
                     <additionalparam>
-                        -template ${project.basedir}/report/template/sheet_01.xls
+                        -template ${project.basedir}/report/template/sheet_02.xls
                         -reportdir ${project.basedir}/report/testlist
                         -reportfilename {0}_TestCase({1}).xls
                         -sorttag @no

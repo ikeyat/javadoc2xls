@@ -1,7 +1,9 @@
 package com.example.tools.xls2conf.javadoc2xls.report;
 
+import com.example.tools.xls2conf.javadoc2xls.doc.ClassDocBean;
 import com.example.tools.xls2conf.javadoc2xls.doc.MethodDocBean;
 import com.example.tools.xls2conf.javadoc2xls.report.writer.*;
+import com.example.tools.xls2conf.javadoc2xls.report.writer.once.*;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
 import org.slf4j.Logger;
@@ -81,23 +83,41 @@ public class TestListBook {
                     rowIndex = cell.getRowIndex();
 
                     logger.debug("row marker \"{}\" is detected at ({}, {})", type, columnIndex, rowIndex);
-                } else if (cellValue.startsWith(MARKER_CELL)) {
-                    String type = cellValue.replace(MARKER_CELL, "");
-                    int columnIndex = cell.getColumnIndex();
-                    if (MARKER_CLASSNAME.equals(type)) {
-                        // for className
-                        cellMap.put(MARKER_CLASSNAME, cell);
-                        logger.debug("cell marker \"{}\" is detected at ({}, {})", type, columnIndex, rowIndex);
-                    }
                 }
             }
         }
     }
 
-    public void writeCell(String type, String text) {
-        Cell cell = cellMap.get(type);
-        if (cell != null) {
-            cell.setCellValue(text);
+    public void writeCell(ClassDocBean classDocBean) {
+        for (Row row : this.sheet) {
+            for (Cell cell : row) {
+                String cellValue = cell.getStringCellValue();
+                if (cellValue == null || cellValue.length() == 0) {
+                    // skip blank cell
+                    continue;
+                }
+                cellValue = cellValue.trim();
+                if (cellValue.startsWith(MARKER_CELL)) {
+                    String type = cellValue.replace(MARKER_CELL, "");
+                    logger.debug("cell marker \"{}\" is detected at ({}, {})", type, cell.getColumnIndex(),
+                            cell.getRowIndex());
+                    OnceCellWriter writer;
+                    if (ClassNameOnceCellWriter.isTestMethodNameType(type)) {
+                        // for classdName
+                        writer = new ClassNameOnceCellWriter();
+                    } else if (CommentTextOnceCellWriter.isCommentTextType(type)) {
+                        // for commentText
+                        writer = new CommentTextOnceCellWriter();
+                    } else if (DateOnceCellWriter.isDateType(type)) {
+                        // for date
+                        writer = new DateOnceCellWriter(type);
+                    } else {
+                        // for tags
+                        writer = new TagOnceCellWriter(type);
+                    }
+                    writer.write(cell, classDocBean);
+                }
+            }
         }
     }
 

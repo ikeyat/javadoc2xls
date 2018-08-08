@@ -3,9 +3,7 @@ package com.example.tools.xls2conf.javadoc2xls.doc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Comparator;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created by ikeya on 15/01/18.
@@ -37,14 +35,18 @@ public class ClassDocBean {
 
     private String id;
     private String className;
+    private String commentText;
+    private Map<String, String> tags;
     private String reportFileName;
     private Set<MethodDocBean> methodDocs;
 
-    public ClassDocBean(String id, String className, String sortTag, String reportFileName) {
+    public ClassDocBean(String id, String className, String commentText, String sortTag, String reportFileName) {
         this.id = id;
         this.className = className;
+        this.commentText = commentText;
         this.reportFileName = reportFileName;
         this.methodDocs = new TreeSet<>(new MethodComparator(sortTag));
+        this.tags = new HashMap<String, String>();
     }
 
     public String getId() {
@@ -53,6 +55,14 @@ public class ClassDocBean {
 
     public String getClassName() {
         return className;
+    }
+
+    public String getCommentText() {
+        return commentText;
+    }
+
+    public Map<String, String> getTags() {
+        return tags;
     }
 
     public String getReportFileName() {
