@@ -111,6 +111,15 @@ For example,
 - ``#row#methodName`` means "binds ``#methodName`` variable with row binding mode"
 
 ### Variables
-|Variable        | Description                                  | Example          | Example Output        |
-|----------------|----------------------------------------------|------------------|-----------------------|
-|      |      |      |      |
+|Variable        | ``#cell`` | ``#row`` | Description                            | Example           | Example Output        |
+|----------------|-----------|----------|----------------------------------------|-------------------|-----------------------|
+|``#className``  |OK         |NG        |Write a full name of the test class.    |``#cell#className``|``com.example.fuga.FugaTest``|
+|``#methodName`` |NG         |OK        |Write a test method name.               |``#row#methodName``|``testFuga_001``       |
+|``#commentText``|NG         |OK        |Write a javadoc comment of each test method.|``#row#commentText``|``This is a comment``|
+|``#staticText#{any text}`` |NG   |OK   |Write a given static text.              |``#row#staticText#Passed!``|``Passed!``    |
+|``#date#{format}``|NG       |OK        |Write a runtime system timetamp with given format. |``#row#date#YYYY/MM/DD``|``2018/08/22``|
+|``#date#{format}``|NG       |OK        |Write a runtime system timetamp with given format. |``#date#YYYY/MM/DD``|``2018/08/22``|
+
+
+
+
