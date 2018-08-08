@@ -117,7 +117,7 @@ For example,
 |``#methodName`` |NG         |OK        |Write a test method name.               |``#row#methodName``|``testFuga_001``       |
 |``#commentText``|NG         |OK        |Write a javadoc comment of each test method.|``#row#commentText``|``This is a comment``|
 |``#staticText#{any text}`` |NG   |OK   |Write a given static text.              |``#row#staticText#Passed!``|``Passed!``    |
-|``#date#{format}``|NG       |OK        |Write a runtime system timetamp with given format. |``#row#date#YYYY/MM/DD``|``2018/08/22``|
+|``#date#{format}``|NG       |OK        |Write a runtime system timetamp with given format. |``#row#date#yyyy/MM/dd``|``2018/08/22``|
 |``@{tag name}``|NG         |OK         |Write a value in the javadoc tag of each test method. |``#row@expected``|``return "1234"``|
 
 
