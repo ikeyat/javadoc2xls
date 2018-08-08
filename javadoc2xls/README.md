@@ -67,3 +67,15 @@ This tool will resolve this problem and keep the consistency with its one-way ge
 
     Afeter execution, go to the ``report/testlist`` folder. You can find generated Excel worksheets with javadoc contents if Maven complete successfully.
     
+
+# Spec
+## Execution parameters
+|Parameter       | Description                                  |
+|----------------|----------------------------------------------|
+|-template       | Path to a template Excel worksheet file.     |
+|-reportdir      | Output directory path.                       |
+|-reportfilename | Name convention of output worksheet files. ``{0}`` variable means test class id (auto generated), ``{1}`` variables means class name. |
+|-sorttag        | Any javadoc tag on test methods to sort test methods. |
+|-sheetindex     | Target sheet to be generated. This tool can handle only 1 sheet for each worksheet. |
+
+## Worksheet variables
