@@ -69,6 +69,13 @@ This tool will resolve this problem and keep the consistency with its one-way ge
     
 
 # Spec
+## Input and Output
+* Input
+    - Template worksheet with variables (1 file)
+    - JUnit classes annotated with ``@Test`` (N files)
+* Output
+    - Generated test case documents (N files)
+
 ## Execution parameters
 |Parameter       | Description                                  |
 |----------------|----------------------------------------------|
@@ -79,3 +86,31 @@ This tool will resolve this problem and keep the consistency with its one-way ge
 |-sheetindex     | Target sheet to be generated. This tool can handle only 1 sheet for each worksheet. |
 
 ## Worksheet variables
+Variables are annotation to be replaced with actual values such as javadoc contents, class name, method name, timestamp, static text, etc...
+To write variables on worksheet template, please follow a simple grammar as follows.
+
+### Variable binding mode
+This tool supports 2 variable binding modes. You can choose any mode for your purpose.
+
+* Cell binding mode
+    binds value at once. The replacement is never repeated for each test method.
+    Therefore this is used to describe overview of a test class (ex. target class name).
+* Row binding mode 
+    binds value repeatedly for each row of the worksheet.
+    Number of repeats is the number of test method in a test class.
+    This is used to describe each test method (ex. test method name).
+    
+### Syntax
+
+```
+#{binding mode}{variable}
+```
+
+For example, 
+- ``#cell#className`` means "binds ``#className`` variable with cell binding mode"
+- ``#row#methodName`` means "binds ``#methodName`` variable with row binding mode"
+
+### Variables
+|Variable        | Description                                  | Example          | Example Output        |
+|----------------|----------------------------------------------|------------------|-----------------------|
+|      |      |      |      |
