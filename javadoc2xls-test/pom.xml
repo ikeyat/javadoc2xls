@@ -40,10 +40,28 @@
                             <encoding>UTF-8</encoding>
                             <useStandardDocletOptions>true</useStandardDocletOptions>
                             <!-- techniques to avoid errors in custom tags -->
-                            <additionalparam>
-                                -tag no:m -tag column1:m -tag column2:m
-                                -tag column3:m
-                            </additionalparam>
+                            <tags>
+                                <tag>
+                                    <name>no</name>
+                                    <placement>m</placement>
+                                    <head>No:</head>
+                                </tag>
+                                <tag>
+                                    <name>column1</name>
+                                    <placement>m</placement>
+                                    <head>column1:</head>
+                                </tag>
+                                <tag>
+                                    <name>column2</name>
+                                    <placement>m</placement>
+                                    <head>column2:</head>
+                                </tag>
+                                <tag>
+                                    <name>column3</name>
+                                    <placement>m</placement>
+                                    <head>column3:</head>
+                                </tag>
+                            </tags>
                         </configuration>
                     </plugin>
                 </plugins>
