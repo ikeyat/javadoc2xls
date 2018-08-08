@@ -23,29 +23,61 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                    <doclet>com.example.tools.xls2conf.javadoc2xls.Javadoc2XlsDoclet</doclet>
-                    <docletArtifact>
-                        <groupId>com.example.tools.xls2conf</groupId>
-                        <artifactId>javadoc2xls</artifactId>
-                        <version>1.0-SNAPSHOT</version>
-                    </docletArtifact>
-                    <encoding>UTF-8</encoding>
-                    <useStandardDocletOptions>false</useStandardDocletOptions>
-                    <additionalparam>
-                        -template ${project.basedir}/report/template/sheet_02.xls
-                        -reportdir ${project.basedir}/report/testlist
-                        -reportfilename {0}_TestCase({1}).xls
-                        -sorttag @no
-                        -sheetindex 0
-                    </additionalparam>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                            <useStandardDocletOptions>true</useStandardDocletOptions>
+                            <!-- techniques to avoid errors in custom tags -->
+                            <additionalparam>
+                                -tag no:m -tag column1:m -tag column2:m
+                                -tag column3:m
+                            </additionalparam>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>javadoc2xls</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <configuration>
+                            <doclet>com.example.tools.xls2conf.javadoc2xls.Javadoc2XlsDoclet</doclet>
+                            <docletArtifact>
+                                <groupId>com.example.tools.xls2conf</groupId>
+                                <artifactId>javadoc2xls</artifactId>
+                                <version>1.0-SNAPSHOT</version>
+                            </docletArtifact>
+                            <encoding>UTF-8</encoding>
+                            <useStandardDocletOptions>false</useStandardDocletOptions>
+                            <additionalparam>
+                                -template ${project.basedir}/report/template/sheet_02.xls
+                                -reportdir ${project.basedir}/report/testlist
+                                -reportfilename {0}_TestCase({1}).xls
+                                -sorttag @no
+                                -sheetindex 0
+                            </additionalparam>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
