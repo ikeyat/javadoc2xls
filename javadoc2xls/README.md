@@ -123,9 +123,9 @@ For example,
 
 
 # Hints
-If you have the maven-javadoc-config to your app, you cannot get standard javadoc of your app.
+If you have the ``maven-javadoc-config`` to your app, you cannot get standard javadoc of your app.
 Maven profile will help this problem. I recommend that you have the config at the minor Maven profile, not the default profile.
 
-Other cases, if you would like to get standard javadoc of test code additionally, custom tag option will be helpful. You can find simple [example](https://github.com/ikeyat/xls2conf/blob/master/javadoc2xls-test/pom.xml).
+Other cases, if you would like to get standard javadoc of test code additionally, custom tag option will be helpful. You can find a simple [example](https://github.com/ikeyat/xls2conf/blob/master/javadoc2xls-test/pom.xml).
 For more detail, see https://maven.apache.org/plugins-archives/maven-javadoc-plugin-2.8.1/examples/tag-configuration.html.
 
