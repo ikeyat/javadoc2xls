@@ -115,10 +115,10 @@ For example,
 |----------------|-----------|----------|----------------------------------------|-------------------|-----------------------|
 |``#className``  |OK         |NG        |Write a full name of the test class.    |``#cell#className``|``com.example.fuga.FugaTest``|
 |``#methodName`` |NG         |OK        |Write a test method name.               |``#row#methodName``|``testFuga_001``       |
-|``#commentText``|NG         |OK        |Write a javadoc comment of each test method.|``#row#commentText``|``This is a comment``|
+|``#commentText``|OK         |OK        |Write a javadoc comment of each test method.|``#row#commentText``|``This is a comment``|
 |``#staticText#{any text}`` |NG   |OK   |Write a given static text.              |``#row#staticText#Passed!``|``Passed!``    |
-|``#date#{format}``|NG       |OK        |Write a runtime system timetamp with given format. |``#row#date#yyyy/MM/dd``|``2018/08/22``|
-|``@{tag name}``|NG         |OK         |Write a value in the javadoc tag of each test method. |``#row@expected``|``return "1234"``|
+|``#date#{format}``|OK       |OK        |Write a runtime system timetamp with given format. |``#row#date#yyyy/MM/dd``|``2018/08/22``|
+|``@{tag name}``|OK         |OK         |Write a value in the javadoc tag of each test method. |``#row@expected``|``return "1234"``|
 
 
 
