@@ -75,7 +75,7 @@
                             <docletArtifact>
                                 <groupId>jp.ikeyat.tools.javadoc2xls</groupId>
                                 <artifactId>javadoc2xls-tool</artifactId>
-                                <version>1.0-SNAPSHOT</version>
+                                <version>1.0.0-SNAPSHOT</version>
                             </docletArtifact>
                             <encoding>UTF-8</encoding>
                             <useStandardDocletOptions>false</useStandardDocletOptions>
