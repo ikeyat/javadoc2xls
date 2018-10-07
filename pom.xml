@@ -3,11 +3,30 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>jp.ikeyat.tools.javadoc2xls</groupId>
-    <artifactId>root</artifactId>
+    <artifactId>javadoc2xls-root</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <name>javadoc2xls-root</name>
+    <description>A tool to generate Excel spread sheet from Javadoc of JUnit source code.</description>
+    <url>https://github.com/ikeyat/javadoc2xls</url>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>ikeyat</name>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:https://github.com/ikeyat/javadoc2xls.git</connection>
+        <developerConnection>scm:git:https://github.com/ikeyat/javadoc2xls.git</developerConnection>
+        <url>https://github.com/ikeyat/javadoc2xls</url>
+    </scm>
+
     <modules>
         <module>tool</module>
         <module>sample</module>

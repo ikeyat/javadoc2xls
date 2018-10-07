@@ -2,12 +2,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>jp.ikeyat.tools.javadoc2xls</groupId>
     <artifactId>sample</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>javadoc2xls-sample</name>
+    <description>Sample usage of javadoc2xls.</description>
+    <url>https://github.com/ikeyat/javadoc2xls</url>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>ikeyat</name>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:https://github.com/ikeyat/javadoc2xls.git</connection>
+        <developerConnection>scm:git:https://github.com/ikeyat/javadoc2xls.git</developerConnection>
+        <url>https://github.com/ikeyat/javadoc2xls</url>
+    </scm>
 
     <build>
         <plugins>
