@@ -9,8 +9,8 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>javadoc2xls</module>
-        <module>javadoc2xls-test</module>
+        <module>tool</module>
+        <module>sample</module>
     </modules>
 
 
