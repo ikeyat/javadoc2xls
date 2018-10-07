@@ -13,17 +13,13 @@ This tool will resolve this problem and keep the consistency with its one-way ge
 
 1. Install with maven  
     ```console
-    $ cd xls2-conf-parent
-    $ mvn install
-    $ cd ../xls2-conf
-    $ mvn install
-    $ cd ../javadoc2xls
+    $ cd tool
     $ mvn install
     ```
 
 1. Check an example  
-    See the ``javadoc2xls-test`` project.
-    https://github.com/ikeyat/xls2conf/tree/master/javadoc2xls-test
+    See the ``sample`` project.
+    https://github.com/ikeyat/javadoc2xls/tree/master/sample
     
     See JUnit code (``HogeTest.java``, ``FugaTest.java``) in ``src/java/test``. You will find javadoc on these classes.
     
@@ -38,10 +34,10 @@ This tool will resolve this problem and keep the consistency with its one-way ge
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
-                    <doclet>com.example.tools.xls2conf.javadoc2xls.Javadoc2XlsDoclet</doclet>
+                    <doclet>jp.ikeyat.tools.javadoc2xls.Javadoc2XlsDoclet</doclet>
                     <docletArtifact>
-                        <groupId>com.example.tools.xls2conf</groupId>
-                        <artifactId>javadoc2xls</artifactId>
+                        <groupId>jp.ikeyat.tools.javadoc2xls</groupId>
+                        <artifactId>tool</artifactId>
                         <version>1.0-SNAPSHOT</version>
                     </docletArtifact>
                     <encoding>UTF-8</encoding>
@@ -61,7 +57,7 @@ This tool will resolve this problem and keep the consistency with its one-way ge
     Go back to the console, please execute Maven as follows to generate javadoc of test classes.
     Don't forget to switch Maven profile (``-P``).
     ```console
-    $ cd ../javadoc2xls-test
+    $ cd ../sample
     $ mvn javadoc:test-javadoc -P javadoc2xls
     ```
 
@@ -126,6 +122,6 @@ For example,
 If you have the ``maven-javadoc-config`` to your app, you cannot get standard javadoc of your app.
 Maven profile will help this problem. I recommend that you have the config at the minor Maven profile, not the default profile.
 
-Other cases, if you would like to get standard javadoc of test code additionally, custom tag option will be helpful. You can find a simple [example](https://github.com/ikeyat/xls2conf/blob/master/javadoc2xls-test/pom.xml).
+Other cases, if you would like to get standard javadoc of test code additionally, custom tag option will be helpful. You can find a simple [example](https://github.com/ikeyat/javadoc2xls/blob/master/sample/pom.xml).
 For more detail, see https://maven.apache.org/plugins-archives/maven-javadoc-plugin-2.8.1/examples/tag-configuration.html.
 

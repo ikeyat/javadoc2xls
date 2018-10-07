@@ -1,4 +1,4 @@
-package com.example.tools.xls2conf.javadoc2xls;
+package jp.ikeyat.tools.javadoc2xls;
 
 import com.sun.tools.doclets.formats.html.HtmlDoclet;
 

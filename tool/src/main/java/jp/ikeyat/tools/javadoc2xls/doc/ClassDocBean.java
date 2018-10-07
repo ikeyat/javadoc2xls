@@ -1,4 +1,4 @@
-package com.example.tools.xls2conf.javadoc2xls.doc;
+package jp.ikeyat.tools.javadoc2xls.doc;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

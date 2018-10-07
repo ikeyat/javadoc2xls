@@ -7,4 +7,4 @@ release.properties
 *.iml
 .*/
 .DS_Store
-
+sample/report/testlist/

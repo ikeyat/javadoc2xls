@@ -1,8 +1,6 @@
-package com.example.tools.xls2conf.javadoc2xls.report.writer.once;
+package jp.ikeyat.tools.javadoc2xls.report.writer.once;
 
-import com.example.tools.xls2conf.javadoc2xls.doc.ClassDocBean;
-import com.example.tools.xls2conf.javadoc2xls.doc.MethodDocBean;
-import com.example.tools.xls2conf.javadoc2xls.report.writer.CellWriter;
+import jp.ikeyat.tools.javadoc2xls.doc.ClassDocBean;
 
 import java.util.Map;
 

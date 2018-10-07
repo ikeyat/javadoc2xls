@@ -1,9 +1,7 @@
-package com.example.tools.xls2conf.javadoc2xls.report.writer.once;
+package jp.ikeyat.tools.javadoc2xls.report.writer.once;
 
-import com.example.tools.xls2conf.javadoc2xls.doc.ClassDocBean;
-import com.example.tools.xls2conf.javadoc2xls.doc.MethodDocBean;
+import jp.ikeyat.tools.javadoc2xls.doc.ClassDocBean;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

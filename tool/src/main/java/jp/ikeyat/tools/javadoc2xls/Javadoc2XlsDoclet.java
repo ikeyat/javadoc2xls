@@ -1,8 +1,8 @@
-package com.example.tools.xls2conf.javadoc2xls;
+package jp.ikeyat.tools.javadoc2xls;
 
-import com.example.tools.xls2conf.javadoc2xls.doc.ClassDocBean;
-import com.example.tools.xls2conf.javadoc2xls.doc.MethodDocBean;
-import com.example.tools.xls2conf.javadoc2xls.report.TestListBook;
+import jp.ikeyat.tools.javadoc2xls.doc.ClassDocBean;
+import jp.ikeyat.tools.javadoc2xls.doc.MethodDocBean;
+import jp.ikeyat.tools.javadoc2xls.report.TestListBook;
 import com.sun.javadoc.*;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Test;
