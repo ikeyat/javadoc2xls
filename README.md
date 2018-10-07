@@ -5,13 +5,21 @@ In general, test case documents are required in enterprise software developments
 It usually becomes very difficult to keep the consistency between test case documents and JUnit code when there are some modifications.
 This tool will resolve this problem and keep the consistency with its one-way generation mechanisim.
 
+# Image
+
+Write test code with some javadoc including tags.
+![testcode-sample.png](doc/testcode-sample.png)
+
+Then generate javadoc with javadoc2xls, get Excel worksheet.
+![worksheet-sample.png](doc/worksheet-sample.png)
+
 # Get Started
 
 ## Setup
 
 1. Please checkout or download this repos. (Because this tool is not registerd in MavenCentral)
 
-1. Install with maven  
+1. Install with maven
     ```console
     $ cd tool
     $ mvn install
@@ -25,7 +33,7 @@ This tool will resolve this problem and keep the consistency with its one-way ge
     
     Next, see the template Excel worksheet in ``report/template``. You will find worksheet with some annotated cells.
     
-    Next, see ``pom.xml``. There is a defifition to switch default javadoc generator to this tool as follows.
+    Next, see ``pom.xml``. There is a definition to switch default javadoc generator to this tool as follows.
     You can modifiy the configuration if you want to tune.
     For example, output directory, file name convention, etc...
     
@@ -38,7 +46,7 @@ This tool will resolve this problem and keep the consistency with its one-way ge
                     <docletArtifact>
                         <groupId>jp.ikeyat.tools.javadoc2xls</groupId>
                         <artifactId>javadoc2xls-tool</artifactId>
-                        <version>1.0-SNAPSHOT</version>
+                        <version>1.0.0-SNAPSHOT</version>
                     </docletArtifact>
                     <encoding>UTF-8</encoding>
                     <useStandardDocletOptions>false</useStandardDocletOptions>
@@ -125,3 +133,13 @@ Maven profile will help this problem. I recommend that you have the config at th
 Other cases, if you would like to get standard javadoc of test code additionally, custom tag option will be helpful. You can find a simple [example](https://github.com/ikeyat/javadoc2xls/blob/master/sample/pom.xml).
 For more detail, see https://maven.apache.org/plugins-archives/maven-javadoc-plugin-2.8.1/examples/tag-configuration.html.
 
+# Migration from old version
+javadoc2xls was published at https://github.com/ikeyat/xls2conf/tree/master/javadoc2xls.
+If you are an old user, please migrate javadoc2xls as follows.
+
+1. Change a ``groupId`` and ``artifactId`` of javadoc2xls in a ``pom.xml`` of your application.
+    - Replace ``groupId`` from ``com.example.tools.xls2conf.javadoc2xls`` to ``jp.ikeyat.tools.javadoc2xls``.
+    - Replace ``artifactId`` from ``javadoc2xls`` to ``javadoc2xls-tool``
+
+1. Change a package name of ``Javadoc2XlsDoclet`` in a ``pom.xml`` of your application.
+   - Replace ``<doclet>com.example.tools.xls2conf.javadoc2xls.Javadoc2XlsDoclet</doclet>`` to ``<doclet>jp.ikeyat.tools.javadoc2xls.Javadoc2XlsDoclet</doclet>``
