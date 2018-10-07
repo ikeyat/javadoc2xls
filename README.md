@@ -45,7 +45,7 @@ Then generate javadoc with javadoc2xls, get Excel worksheet.
                 <configuration>
                     <doclet>jp.ikeyat.tools.javadoc2xls.Javadoc2XlsDoclet</doclet>
                     <docletArtifact>
-                        <groupId>jp.ikeyat.tools.javadoc2xls</groupId>
+                        <groupId>io.github.ikeyat.tools.javadoc2xls</groupId>
                         <artifactId>javadoc2xls-tool</artifactId>
                         <version>1.0.0-SNAPSHOT</version>
                     </docletArtifact>
@@ -139,7 +139,7 @@ javadoc2xls was published at https://github.com/ikeyat/xls2conf/tree/master/java
 If you are an old user, please migrate javadoc2xls as follows.
 
 1. Change a ``groupId`` and ``artifactId`` of javadoc2xls in a ``pom.xml`` of your application.
-    - Replace ``groupId`` from ``com.example.tools.xls2conf.javadoc2xls`` to ``jp.ikeyat.tools.javadoc2xls``.
+    - Replace ``groupId`` from ``com.example.tools.xls2conf.javadoc2xls`` to ``io.github.ikeyat.tools.javadoc2xls``.
     - Replace ``artifactId`` from ``javadoc2xls`` to ``javadoc2xls-tool``
 
 1. Change a package name of ``Javadoc2XlsDoclet`` in a ``pom.xml`` of your application.
