@@ -12,9 +12,8 @@ This tool will resolve this problem and keep the consistency with its one-way ge
 # Image
 
 Write test code with some javadoc including tags.
-![testcode-sample.png](doc/testcode-sample.png)
-
 Then generate javadoc with javadoc2xls, get Excel worksheet.
+
 ![worksheet-sample.png](doc/worksheet-sample.png)
 
 # Get Started
