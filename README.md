@@ -1,3 +1,7 @@
+# javadoc2xls
+[![Build Status](https://travis-ci.org/ikeyat/javadoc2xls.svg?branch=master)](https://travis-ci.org/ikeyat/javadoc2xls)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # Motivation
 
 This tool aim to generate test case documents (Excel worksheet) from javadoc on JUnit classes.
@@ -14,8 +18,6 @@ Then generate javadoc with javadoc2xls, get Excel worksheet.
 ![worksheet-sample.png](doc/worksheet-sample.png)
 
 # Get Started
-
-## Setup
 
 1. Please checkout or download this repos. (Because this tool is not registerd in MavenCentral)
 
