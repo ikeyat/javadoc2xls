@@ -1,4 +1,5 @@
 # javadoc2xls
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8f6043165594406b91c77a88d657f860)](https://app.codacy.com/app/tm-ikeya/javadoc2xls?utm_source=github.com&utm_medium=referral&utm_content=ikeyat/javadoc2xls&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.org/ikeyat/javadoc2xls.svg?branch=master)](https://travis-ci.org/ikeyat/javadoc2xls)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
