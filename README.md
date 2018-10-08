@@ -2,32 +2,25 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8f6043165594406b91c77a88d657f860)](https://app.codacy.com/app/tm-ikeya/javadoc2xls?utm_source=github.com&utm_medium=referral&utm_content=ikeyat/javadoc2xls&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.org/ikeyat/javadoc2xls.svg?branch=master)](https://travis-ci.org/ikeyat/javadoc2xls)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.ikeyat.tools.javadoc2xls/javadoc2xls-tool.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.ikeyat.tools.javadoc2xls%22%20AND%20a:%22javadoc2xls-tool%22)
 
-# Motivation
+## Motivation
 
-This tool aim to generate test case documents (Excel worksheet) from javadoc on JUnit classes.
+This tool aims to generate test case documents (Excel worksheet) from javadoc on JUnit classes.
 In general, test case documents are required in enterprise software developments.
 It usually becomes very difficult to keep the consistency between test case documents and JUnit code when there are some modifications.
 This tool will resolve this problem and keep the consistency with its one-way generation mechanisim.
 
-# Image
+## Image
 
 Write test code with some javadoc including tags.
 Then generate javadoc with javadoc2xls, get Excel worksheet.
 
 ![worksheet-sample.png](doc/worksheet-sample.png)
 
-# Get Started
+## Get Started
 
-1. Please checkout or download this repos. (Because this tool is not registerd in MavenCentral)
-
-1. Install with maven
-    ```console
-    $ cd tool
-    $ mvn install
-    ```
-
-1. Check an example  
+1. Download and look at the example  
     See the ``sample`` project.
     https://github.com/ikeyat/javadoc2xls/tree/master/sample
     
@@ -48,7 +41,7 @@ Then generate javadoc with javadoc2xls, get Excel worksheet.
                     <docletArtifact>
                         <groupId>io.github.ikeyat.tools.javadoc2xls</groupId>
                         <artifactId>javadoc2xls-tool</artifactId>
-                        <version>1.0.0-SNAPSHOT</version>
+                        <version>1.0.0.RELEASE</version>
                     </docletArtifact>
                     <encoding>UTF-8</encoding>
                     <useStandardDocletOptions>false</useStandardDocletOptions>
@@ -64,10 +57,10 @@ Then generate javadoc with javadoc2xls, get Excel worksheet.
     ```
   
 1. Try the example!  
-    Go back to the console, please execute Maven as follows to generate javadoc of test classes.
+    Go to the console, please execute Maven as follows to generate javadoc of test classes.
     Don't forget to switch Maven profile (``-P``).
     ```console
-    $ cd ../sample
+    $ cd sample
     $ mvn javadoc:test-javadoc -P javadoc2xls
     ```
 
@@ -75,15 +68,15 @@ Then generate javadoc with javadoc2xls, get Excel worksheet.
     Afeter execution, go to the ``report/testlist`` folder. You can find generated Excel worksheets with javadoc contents if Maven complete successfully.
     
 
-# Spec
-## Input and Output
+## Spec
+### Input and Output
 * Input
     - Template worksheet with variables (1 file)
     - JUnit classes annotated with ``@Test`` (N files)
 * Output
     - Generated test case documents (N files)
 
-## Execution parameters
+### Execution parameters
 |Parameter       | Description                                  |
 |----------------|----------------------------------------------|
 |-template       | Path to a template Excel worksheet file.     |
@@ -92,11 +85,11 @@ Then generate javadoc with javadoc2xls, get Excel worksheet.
 |-sorttag        | Any javadoc tag on test methods to sort test methods. |
 |-sheetindex     | Target sheet to be generated. This tool can handle only 1 sheet for each worksheet. |
 
-## Worksheet variables
+### Worksheet variables
 Variables are annotation to be replaced with actual values such as javadoc contents, class name, method name, timestamp, static text, etc...
 To write variables on worksheet template, please follow a simple grammar as follows.
 
-### Variable binding mode
+#### Variable binding mode
 This tool supports 2 variable binding modes. You can choose any mode for your purpose.
 
 * Cell binding mode
@@ -107,7 +100,7 @@ This tool supports 2 variable binding modes. You can choose any mode for your pu
     Number of repeats is the number of test method in a test class.
     This is used to describe each test method (ex. test method name).
     
-### Syntax
+#### Syntax
 
 ```
 #{binding mode}{variable}
@@ -117,7 +110,7 @@ For example,
 - ``#cell#className`` means "binds ``#className`` variable with cell binding mode"
 - ``#row#methodName`` means "binds ``#methodName`` variable with row binding mode"
 
-### Variables
+#### Variables
 |Variable        | ``#cell`` | ``#row`` | Description                            | Example           | Example Output        |
 |----------------|-----------|----------|----------------------------------------|-------------------|-----------------------|
 |``#className``  |OK         |NG        |Write a full name of the test class.    |``#cell#className``|``com.example.fuga.FugaTest``|
@@ -128,14 +121,14 @@ For example,
 |``@{tag name}``|OK         |OK         |Write a value in the javadoc tag of each test method. |``#row@expected``|``return "1234"``|
 
 
-# Hints
-If you have the ``maven-javadoc-config`` to your app, you cannot get standard javadoc of your app.
-Maven profile will help this problem. I recommend that you have the config at the minor Maven profile, not the default profile.
+## Hints
+If you have the ``maven-javadoc-plugin`` config for javadoc2xls, you cannot get standard HTML style javadoc of your test code.
+Maven profile will help this problem. I recommend that you have the config for javadoc2xls with the minor Maven profile, not the default profile for the people who don't know javadoc2xls.
 
 Other cases, if you would like to get standard javadoc of test code additionally, custom tag option will be helpful. You can find a simple [example](https://github.com/ikeyat/javadoc2xls/blob/master/sample/pom.xml).
 For more detail, see https://maven.apache.org/plugins-archives/maven-javadoc-plugin-2.8.1/examples/tag-configuration.html.
 
-# Migration from old version
+## Migration from old version
 javadoc2xls was published at https://github.com/ikeyat/xls2conf/tree/master/javadoc2xls.
 If you are an old user, please migrate javadoc2xls as follows.
 
@@ -145,3 +138,6 @@ If you are an old user, please migrate javadoc2xls as follows.
 
 1. Change a package name of ``Javadoc2XlsDoclet`` in a ``pom.xml`` of your application.
    - Replace ``<doclet>com.example.tools.xls2conf.javadoc2xls.Javadoc2XlsDoclet</doclet>`` to ``<doclet>jp.ikeyat.tools.javadoc2xls.Javadoc2XlsDoclet</doclet>``
+
+1. Don't require to build the tool by yourself.
+    javadoc2xls has been managed at Maven Central. It's available without your buiding as other major OSS libraries are.
