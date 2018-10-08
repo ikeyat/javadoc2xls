@@ -4,8 +4,6 @@ import jp.ikeyat.tools.javadoc2xls.doc.ClassDocBean;
 import jp.ikeyat.tools.javadoc2xls.doc.MethodDocBean;
 import jp.ikeyat.tools.javadoc2xls.report.writer.*;
 import jp.ikeyat.tools.javadoc2xls.report.writer.once.*;
-import jp.ikeyat.tools.javadoc2xls.report.writer.*;
-import jp.ikeyat.tools.javadoc2xls.report.writer.once.*;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
 import org.slf4j.Logger;
@@ -15,9 +13,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 /**
