@@ -58,7 +58,7 @@ public class Options {
     private Set<String> require(String key) {
         Set<String> ret = optionsMap.get(key);
         if (ret == null || ret.size() == 0) {
-            throw new RuntimeException("option [" + key + "] is required.");
+            throw new IllegalArgumentException("option [" + key + "] is required.");
         }
         return ret;
     }

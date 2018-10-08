@@ -89,9 +89,9 @@ public class Javadoc2XlsDoclet {
                 }
                 book.saveToFile(outputStream);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                throw new IllegalStateException(e);
             } catch (InvalidFormatException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             } finally {
                 logger.debug("{} methods in {}", methodCount, classDocBean.getClassName());
             }
