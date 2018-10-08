@@ -31,17 +31,13 @@ public class TestListBook {
 
     private Workbook workbook;
     private Sheet sheet;
-    private int sheetIndex;
     private Set<CellWriter> cellWriters;
-    private Map<String, Cell> cellMap;
     private int rowIndex = -1;
 
     public TestListBook(String templateFile, int sheetIndex) throws IOException, InvalidFormatException {
         InputStream inputStream = new FileInputStream(templateFile);
         this.workbook = WorkbookFactory.create(inputStream);
-        this.sheetIndex = sheetIndex;
         this.cellWriters = new HashSet<>();
-        this.cellMap = new HashMap<>();
         this.sheet = workbook.getSheetAt(sheetIndex);
         seekHead();
     }
