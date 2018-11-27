@@ -97,9 +97,9 @@
                             <encoding>UTF-8</encoding>
                             <useStandardDocletOptions>false</useStandardDocletOptions>
                             <additionalparam>
-                                -template ${project.basedir}/report/template/sheet_02.xls
+                                -template ${project.basedir}/report/template/sheet_02.xlsx
                                 -reportdir ${project.basedir}/report/testlist
-                                -reportfilename {0}_TestCase({1}).xls
+                                -reportfilename {0}_TestCase({1}).xlsx
                                 -sorttag @no
                                 -sheetindex 0
                             </additionalparam>
