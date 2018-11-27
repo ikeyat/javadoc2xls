@@ -46,9 +46,9 @@ Then generate javadoc with javadoc2xls, get Excel worksheet.
                     <encoding>UTF-8</encoding>
                     <useStandardDocletOptions>false</useStandardDocletOptions>
                     <additionalparam>
-                        -template ${project.basedir}/report/template/sheet_01.xls
+                        -template ${project.basedir}/report/template/sheet_01.xlsx
                         -reportdir ${project.basedir}/report/testlist
-                        -reportfilename {0}_TestCaseaa({1}).xls
+                        -reportfilename {0}_TestCaseaa({1}).xlsx
                         -sorttag @no
                         -sheetindex 0
                     </additionalparam>
@@ -72,9 +72,12 @@ Then generate javadoc with javadoc2xls, get Excel worksheet.
 ### Input and Output
 * Input
     - Template worksheet with variables (1 file)
+        - Legacy Excel workbook format (*.xls)
+        - OOXML(Office Open XML) format (*.xlsx)
     - JUnit classes annotated with ``@Test`` (N files)
 * Output
-    - Generated test case documents (N files)
+    - Generated test case documents (N workbook files)
+        - Format should be same as the template.
 
 ### Execution parameters
 |Parameter       | Description                                  |
