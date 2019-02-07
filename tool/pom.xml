@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.ikeyat.tools.javadoc2xls</groupId>
     <artifactId>javadoc2xls-tool</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1-RELEASE</version>
     <name>javadoc2xls-tool</name>
     <description>A tool to generate Excel spread sheet from Javadoc of JUnit source code.</description>
     <url>https://github.com/ikeyat/javadoc2xls</url>
