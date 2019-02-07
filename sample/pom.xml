@@ -92,7 +92,7 @@
                             <docletArtifact>
                                 <groupId>io.github.ikeyat.tools.javadoc2xls</groupId>
                                 <artifactId>javadoc2xls-tool</artifactId>
-                                <version>1.0.2-SNAPSHOT</version>
+                                <version>1.0.2-RELEASE</version>
                             </docletArtifact>
                             <encoding>UTF-8</encoding>
                             <useStandardDocletOptions>false</useStandardDocletOptions>
