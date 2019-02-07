@@ -44,6 +44,10 @@ public class TestListBook {
     public void seekHead() {
         for (Row row : this.sheet) {
             for (Cell cell : row) {
+                if (cell.getCellType() != Cell.CELL_TYPE_STRING) {
+                    // skip non string cell
+                    continue;
+                }
                 String cellValue = cell.getStringCellValue();
                 if (cellValue == null || cellValue.length() == 0) {
                     // skip blank cell
@@ -85,6 +89,10 @@ public class TestListBook {
     public void writeCell(ClassDocBean classDocBean) {
         for (Row row : this.sheet) {
             for (Cell cell : row) {
+                if (cell.getCellType() != Cell.CELL_TYPE_STRING) {
+                    // skip non string cell
+                    continue;
+                }
                 String cellValue = cell.getStringCellValue();
                 if (cellValue == null || cellValue.length() == 0) {
                     // skip blank cell
