@@ -135,6 +135,7 @@ public class TestListBook {
     }
 
     public void saveToFile(OutputStream outputStream) throws IOException {
+        workbook.getCreationHelper().createFormulaEvaluator().evaluateAll();
         workbook.write(outputStream);
     }
 }
