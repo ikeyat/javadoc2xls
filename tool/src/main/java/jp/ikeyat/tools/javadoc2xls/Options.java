@@ -16,7 +16,7 @@ public class Options {
     private static final String OPTION_REPORTFILENAME = "-reportfilename";
     private static final String OPTION_SORTTAG = "-sorttag";
     private static final String OPTION_SHEETINDEX = "-sheetindex";
-
+    private static final String OPTION_CONVERTER = "-converter";
 
     private Map<String, Set<String>> optionsMap = null;
 
@@ -25,6 +25,7 @@ public class Options {
     private String reportFileName;
     private String sortTag;
     private int sheetIndex;
+    private String converter;
 
     public Options(String[][] options) {
         optionsMap = newHashMap(options);
@@ -33,6 +34,7 @@ public class Options {
         reportFileName = require(OPTION_REPORTFILENAME).iterator().next();
         sortTag = optional(OPTION_SORTTAG).iterator().next();
         sheetIndex = Integer.parseInt(require(OPTION_SHEETINDEX).iterator().next());
+        converter = optional(OPTION_CONVERTER).iterator().next();
     }
 
     private Map<String, Set<String>> newHashMap(String[][] arrays) {
@@ -92,12 +94,15 @@ public class Options {
         return sheetIndex;
     }
 
+    public String getConverter() {return converter; }
+
     public static int optionLength(String option) {
         if (option.equals(OPTION_TEMPLATE)) return 2;
         if (option.equals(OPTION_REPORTDIR)) return 2;
         if (option.equals(OPTION_REPORTFILENAME)) return 2;
         if (option.equals(OPTION_SORTTAG)) return 2;
         if (option.equals(OPTION_SHEETINDEX)) return 2;
+        if (option.equals(OPTION_CONVERTER)) return 2;
         return HtmlDoclet.optionLength(option);
     }
 }

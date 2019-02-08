@@ -102,6 +102,7 @@
                                 -reportfilename {0}_TestCase({1}).xlsx
                                 -sorttag @no
                                 -sheetindex 0
+                                -converter removehtml
                             </additionalparam>
                         </configuration>
                     </plugin>
