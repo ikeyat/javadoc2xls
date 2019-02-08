@@ -9,6 +9,14 @@ import org.junit.Test;
 public class HogeTest {
     /**
      * ここはコメントです1。
+     * <b>bold</b>
+     * <i>italic</i>
+     * <ul>
+     *     <li>aaaa</li>
+     *     <li>bbbb</li>
+     *     <li>cccc</li>
+     * </ul>
+     * br test<br>br test<br>
      * @no 1
      * @column1 ほげ1
      * ほげ2

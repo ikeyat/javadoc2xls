@@ -2,6 +2,7 @@ package jp.ikeyat.tools.javadoc2xls.report;
 
 import jp.ikeyat.tools.javadoc2xls.doc.ClassDocBean;
 import jp.ikeyat.tools.javadoc2xls.doc.MethodDocBean;
+import jp.ikeyat.tools.javadoc2xls.report.converter.Converter;
 import jp.ikeyat.tools.javadoc2xls.report.writer.*;
 import jp.ikeyat.tools.javadoc2xls.report.writer.once.*;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -29,13 +30,16 @@ public class TestListBook {
     private Sheet sheet;
     private Set<CellWriter> cellWriters;
     private int rowIndex = -1;
+    private Converter converter;
 
-    public TestListBook(String templateFile, int sheetIndex) throws IOException, InvalidFormatException {
+    public TestListBook(String templateFile, int sheetIndex, Converter converter)
+            throws IOException, InvalidFormatException {
         InputStream inputStream = new FileInputStream(templateFile);
         this.workbook = WorkbookFactory.create(inputStream);
         this.cellWriters = new HashSet<>();
         this.sheet = workbook.getSheetAt(sheetIndex);
         seekHead();
+        this.converter = converter;
     }
 
     /**
@@ -117,7 +121,7 @@ public class TestListBook {
                         // for tags
                         writer = new TagOnceCellWriter(type);
                     }
-                    writer.write(cell, classDocBean);
+                    writer.write(cell, classDocBean, converter);
                 }
             }
         }
@@ -129,7 +133,7 @@ public class TestListBook {
             row = sheet.createRow(rowIndex);
         }
         for (CellWriter writer : cellWriters) {
-            writer.write(row, methodDocBean);
+            writer.write(row, methodDocBean, converter);
         }
         rowIndex++;
     }
