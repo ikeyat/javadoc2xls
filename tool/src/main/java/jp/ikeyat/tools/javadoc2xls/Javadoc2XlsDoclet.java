@@ -4,6 +4,9 @@ import jp.ikeyat.tools.javadoc2xls.doc.ClassDocBean;
 import jp.ikeyat.tools.javadoc2xls.doc.MethodDocBean;
 import jp.ikeyat.tools.javadoc2xls.report.TestListBook;
 import com.sun.javadoc.*;
+import jp.ikeyat.tools.javadoc2xls.report.converter.Converter;
+import jp.ikeyat.tools.javadoc2xls.report.converter.NoopConverter;
+import jp.ikeyat.tools.javadoc2xls.report.converter.RemoveHtmlConverter;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -81,7 +84,8 @@ public class Javadoc2XlsDoclet {
 
             File file = new File(reportDir + "/" + classDocBean.getReportFileName());
             try (OutputStream outputStream = new FileOutputStream(file)) {
-                TestListBook book = new TestListBook(templateFilePath, sheetIndex);
+                TestListBook book = new TestListBook(templateFilePath, sheetIndex,
+                        switchConverter());
 
                 book.writeCell(classDocBean);
                 for (MethodDocBean methodDocBean : classDocBean.getMethodDocs()) {
@@ -146,5 +150,16 @@ public class Javadoc2XlsDoclet {
             }
         }
         return false;
+    }
+
+    private static Converter switchConverter() {
+        switch (options.getConverter()) {
+            case "removehtml":
+                return new RemoveHtmlConverter();
+            case "normal":
+            default:
+                return new  NoopConverter();
+
+        }
     }
 }

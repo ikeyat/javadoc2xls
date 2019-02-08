@@ -87,6 +87,8 @@ Then generate javadoc with javadoc2xls, get Excel worksheet.
 |-reportfilename | Name convention of output worksheet files. ``{0}`` variable means test class id (auto generated), ``{1}`` variables means class name. |
 |-sorttag        | Any javadoc tag on test methods to sort test methods. |
 |-sheetindex     | Target sheet to be generated. This tool can handle only 1 sheet for each worksheet. |
+|-converter      | Switch converter that converts original javadoc into any text with a certain rule. "normal" or "removehtml" is available|
+
 
 ### Worksheet variables
 Variables are annotation to be replaced with actual values such as javadoc contents, class name, method name, timestamp, static text, etc...

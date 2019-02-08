@@ -1,6 +1,7 @@
 package jp.ikeyat.tools.javadoc2xls.report.writer;
 
 import jp.ikeyat.tools.javadoc2xls.doc.MethodDocBean;
+import jp.ikeyat.tools.javadoc2xls.report.converter.Converter;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.slf4j.Logger;
@@ -20,12 +21,13 @@ public abstract class CellWriter {
         this.columnIndex = columnIndex;
     }
 
-    public void write(Row row, MethodDocBean methodDocBean) {
+    public void write(Row row, MethodDocBean methodDocBean, Converter conveter) {
         Cell cell = row.getCell(columnIndex);
         if (cell == null) {
             cell = row.createCell(columnIndex);
         }
         String text = getText(methodDocBean);
+        text = conveter.convert(text);
         cell.setCellValue(text);
         logger.debug("write at column={}: {}", columnIndex, text);
     }
