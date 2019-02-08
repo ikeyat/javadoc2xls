@@ -28,6 +28,28 @@ public class RemoveHtmlConverterTest {
     }
 
     @Test
+    public void testBrReplaced_004() {
+        Converter converter = new RemoveHtmlConverter();
+        String result = converter.convert("hoge<BR>fuga");
+        assertThat(result, is("hoge\r\nfuga"));
+    }
+
+    @Test
+    public void testBrReplaced_005() {
+        Converter converter = new RemoveHtmlConverter();
+        String result = converter.convert("hoge<BR/>fuga");
+        assertThat(result, is("hoge\r\nfuga"));
+    }
+
+    @Test
+    public void testBrReplaced_006() {
+        Converter converter = new RemoveHtmlConverter();
+        String result = converter.convert("hoge<BR />fuga");
+        assertThat(result, is("hoge\r\nfuga"));
+    }
+
+
+    @Test
     public void testTagRemoved_001() {
         Converter converter = new RemoveHtmlConverter();
         String result = converter.convert("<h1>hoge</h1><b>fuga</b>");
