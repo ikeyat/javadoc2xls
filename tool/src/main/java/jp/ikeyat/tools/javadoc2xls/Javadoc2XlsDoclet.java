@@ -85,7 +85,7 @@ public class Javadoc2XlsDoclet {
             File file = new File(reportDir + "/" + classDocBean.getReportFileName());
             try (OutputStream outputStream = new FileOutputStream(file)) {
                 TestListBook book = new TestListBook(templateFilePath, sheetIndex,
-                        switchConverter());
+                        switchConverter(), options.getResizeRow().booleanValue());
 
                 book.writeCell(classDocBean);
                 for (MethodDocBean methodDocBean : classDocBean.getMethodDocs()) {
