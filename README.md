@@ -75,6 +75,7 @@ Then generate javadoc with javadoc2xls, get Excel worksheet.
         - Legacy Excel workbook format (*.xls)
         - OOXML(Office Open XML) format (*.xlsx)
     - JUnit classes annotated with ``@Test`` (N files)
+        - There is a fallback option for JUnit3 methods without ``@Test`` annotation
 * Output
     - Generated test case documents (N workbook files)
         - Format should be same as the template.
@@ -88,6 +89,7 @@ Then generate javadoc with javadoc2xls, get Excel worksheet.
 |-sorttag        | Any javadoc tag on test methods to sort test methods. |
 |-sheetindex     | Target sheet to be generated. This tool can handle only 1 sheet for each worksheet. |
 |-converter      | Switch converter that converts original javadoc into any text with a certain rule. ``normal`` or ``removehtml`` is available|
+|-junit3fallback | If ``TRUE`` set, JUnit3 test methods are also detected that are started with "test" without ``@Test`` annotation.|
 
 
 ### Worksheet variables
