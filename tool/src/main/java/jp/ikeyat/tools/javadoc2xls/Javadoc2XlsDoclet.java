@@ -71,7 +71,7 @@ public class Javadoc2XlsDoclet {
                         methodDoc.name(),
                         methodDoc.commentText()
                 );
-                if (isTestAnnotated(methodDoc)) {
+                if (isTestMethod(methodDoc)) {
                     parseMethodTags(methodDoc, methodDocBean);
                     classDocBean.getMethodDocs().add(methodDocBean);
                 }
@@ -134,6 +134,17 @@ public class Javadoc2XlsDoclet {
             String tagText = tag.text().replaceAll(tagName + ":", "");
             tagsMap.put(tagName, tagText);
         }
+    }
+
+    public static boolean isTestMethod(MethodDoc methodDoc) {
+        if (isTestAnnotated(methodDoc)) {
+            return true;
+        }
+        return options.getJunit3Fallback() && isJUnit3TestMethod(methodDoc);
+    }
+
+    public static boolean isJUnit3TestMethod(MethodDoc methodDoc) {
+       return methodDoc.name().startsWith("test");
     }
 
     /**
