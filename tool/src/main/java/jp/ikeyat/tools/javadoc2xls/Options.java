@@ -18,7 +18,7 @@ public class Options {
     private static final String OPTION_SHEETINDEX = "-sheetindex";
     private static final String OPTION_CONVERTER = "-converter";
     private static final String OPTION_JUNIT3FALLBACK = "-junit3fallback";
-
+    private static final String OPTION_RESIZEROW = "-resizerow";
 
     private Map<String, Set<String>> optionsMap = null;
 
@@ -29,6 +29,7 @@ public class Options {
     private int sheetIndex;
     private String converter;
     private Boolean junit3Fallback = Boolean.FALSE;
+    private Boolean resizeRow = Boolean.FALSE;
 
     public Options(String[][] options) {
         optionsMap = newHashMap(options);
@@ -39,6 +40,7 @@ public class Options {
         sheetIndex = Integer.parseInt(require(OPTION_SHEETINDEX).iterator().next());
         converter = optional(OPTION_CONVERTER).iterator().next();
         junit3Fallback = Boolean.parseBoolean(optional(OPTION_JUNIT3FALLBACK).iterator().next());
+        resizeRow = Boolean.parseBoolean(optional(OPTION_RESIZEROW).iterator().next());
     }
 
     private Map<String, Set<String>> newHashMap(String[][] arrays) {
@@ -102,6 +104,8 @@ public class Options {
 
     public Boolean getJunit3Fallback() {return junit3Fallback;}
 
+    public Boolean getResizeRow() {return resizeRow;}
+
     public static int optionLength(String option) {
         if (option.equals(OPTION_TEMPLATE)) return 2;
         if (option.equals(OPTION_REPORTDIR)) return 2;
@@ -110,6 +114,7 @@ public class Options {
         if (option.equals(OPTION_SHEETINDEX)) return 2;
         if (option.equals(OPTION_CONVERTER)) return 2;
         if (option.equals(OPTION_JUNIT3FALLBACK)) return 2;
+        if (option.equals(OPTION_RESIZEROW)) return 2;
         return HtmlDoclet.optionLength(option);
     }
 }
