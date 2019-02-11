@@ -31,8 +31,9 @@ public class TestListBook {
     private Set<CellWriter> cellWriters;
     private int rowIndex = -1;
     private Converter converter;
+    private boolean resizeRow = false;
 
-    public TestListBook(String templateFile, int sheetIndex, Converter converter)
+    public TestListBook(String templateFile, int sheetIndex, Converter converter, boolean resizeRow)
             throws IOException, InvalidFormatException {
         InputStream inputStream = new FileInputStream(templateFile);
         this.workbook = WorkbookFactory.create(inputStream);
@@ -40,6 +41,7 @@ public class TestListBook {
         this.sheet = workbook.getSheetAt(sheetIndex);
         seekHead();
         this.converter = converter;
+        this.resizeRow = resizeRow;
     }
 
     /**
@@ -134,6 +136,9 @@ public class TestListBook {
         }
         for (CellWriter writer : cellWriters) {
             writer.write(row, methodDocBean, converter);
+        }
+        if (resizeRow) {
+            row.setHeight((short) -1);
         }
         rowIndex++;
     }

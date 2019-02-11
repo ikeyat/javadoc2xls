@@ -89,7 +89,8 @@ Then generate javadoc with javadoc2xls, get Excel worksheet.
 |-sorttag        | Any javadoc tag on test methods to sort test methods. |
 |-sheetindex     | Target sheet to be generated. This tool can handle only 1 sheet for each worksheet. |
 |-converter      | Switch converter that converts original javadoc into any text with a certain rule. ``normal`` or ``removehtml`` is available|
-|-junit3fallback | If ``TRUE`` set, JUnit3 test methods are also detected that are started with "test" without ``@Test`` annotation.|
+|-junit3fallback | If ``TRUE`` set, JUnit3 test methods are also detected that are started with "test" without ``@Test`` annotation. |
+|-resizerow      | If ``TRUE`` set, height of rows are auto-resized after rendering. |
 
 
 ### Worksheet variables

@@ -104,6 +104,7 @@
                                 -sheetindex 0
                                 -converter removehtml
                                 -junit3fallback TRUE
+                                -resizerow TRUE
                             </additionalparam>
                         </configuration>
                     </plugin>
