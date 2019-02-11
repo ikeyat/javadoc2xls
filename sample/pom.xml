@@ -103,6 +103,7 @@
                                 -sorttag @no
                                 -sheetindex 0
                                 -converter removehtml
+                                -junit3fallback TRUE
                             </additionalparam>
                         </configuration>
                     </plugin>
