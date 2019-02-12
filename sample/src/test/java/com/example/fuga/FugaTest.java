@@ -44,4 +44,9 @@ public class FugaTest {
     public void testFuga_002() {
 
     }
+
+    @Test
+    public void testFuga_003() {
+
+    }
 }
